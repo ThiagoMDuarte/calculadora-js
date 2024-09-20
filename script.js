@@ -5,17 +5,28 @@ let result = ''
 
 const container = document.querySelector('.container')
 const display = container.querySelector('#display')
-let buttons = container.querySelectorAll('[id^="button-"]') //NodeList
+const numButtons = container.querySelectorAll('[id^="button-"]')
+const operatorButtons = container.querySelectorAll('[id^="operador-"]')
 
-buttons.forEach(element => {
+/* operatorButtons.forEach(element => {
+    element.addEventListener('click',writeDisplay)    
+});
+ */
+numButtons.forEach(element => {
     element.addEventListener('click',writeDisplay)    
 });
 
 function writeDisplay (e) {
+    const operators = ['+','-','/','*']
     const value = e.target.textContent
     const displayValue = display.value;
-    display.value = displayValue + e.target.textContent;
-
+    const lastChar = displayValue[displayValue.length - 1]
+    // Adiciona o valor se o display não estiver vazio ou o valor não for um operador
+    if (displayValue || !operators.includes(value)) {
+        // Não deixa adicionar dois operadores seguidos
+        if (!operators.includes(lastChar) || !operators.includes(value)) {
+        display.value = displayValue + value;
+    }}
 }
 
 function operate (operator,firstNumber,secondNumber) {
