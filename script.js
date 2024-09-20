@@ -3,6 +3,21 @@ let secondNumber = ''
 let operator = ''
 let result = ''
 
+const container = document.querySelector('.container')
+const display = container.querySelector('#display')
+let buttons = container.querySelectorAll('[id^="button-"]') //NodeList
+
+buttons.forEach(element => {
+    element.addEventListener('click',writeDisplay)    
+});
+
+function writeDisplay (e) {
+    const value = e.target.textContent
+    const displayValue = display.value;
+    display.value = displayValue + e.target.textContent;
+
+}
+
 function operate (operator,firstNumber,secondNumber) {
     if (operator === '+') {
         add(firstNumber,secondNumber)
