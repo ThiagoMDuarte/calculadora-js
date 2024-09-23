@@ -1,13 +1,17 @@
-/* let firstNumber = ''
-let secondNumber = ''
-let operator = null */
-
 const container = document.querySelector('.container')
 const display = container.querySelector('#display')
 const numButtons = container.querySelectorAll('[id^="button-"]')
 const igualButton = container.querySelector('#igual')
+const resultDisplay = container.querySelector('#result')
+const limparButton = container.querySelector('#limpar')
+
+limparButton.addEventListener('click',limparDisplay)
 
 igualButton.addEventListener('click',getExpression)    
+
+function limparDisplay () {
+    display.value = ''
+}
 
 function getExpression () {
     let expression = display.value
@@ -25,14 +29,10 @@ function getExpression () {
     const firstNumber = expression.slice(0,operatorIndex)
     const secondNumber = expression.slice(operatorIndex + 1)
     const operator = expression[operatorIndex]
-    
-    display.value = ''
-    console.log(operate(operator,Number(firstNumber),Number(secondNumber)))
-}
-    
-    /* dividir a expressao em 3 começo até indiceoperador, operador e operador até fim 
-    chamar a função operate */
-}
+    const result = operate(operator,Number(firstNumber),Number(secondNumber))
+    display.value = result
+
+}}
 
 numButtons.forEach(element => {
     element.addEventListener('click',writeDisplay)    
