@@ -104,7 +104,9 @@ button:active {
     color: #fff;
     cursor: pointer;
 }
-
+#button-1,#button-2,#button-3 {
+    margin-bottom: 10px;
+}
 #igual {
     background-color: #5cb85c;
 }
