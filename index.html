@@ -9,25 +9,43 @@
 </head>
 <body>
 	<div class="container">
-		<input type="text" id="display" disabled>
-
-		<button id="button-0">0</button>
-		<button id="button-1">1</button>
-		<button id="button-2">2</button>
-		<button id="button-3">3</button>
-		<button id="button-4">4</button>
-		<button id="button-5">5</button>
-		<button id="button-6">6</button>
-		<button id="button-7">7</button>
-		<button id="button-8">8</button>
-		<button id="button-9">9</button>
-
-		<button id="button-operador-soma">+</button>
-		<button id="button-operador-subtracao">-</button>
-		<button id="button-operador-multiplicacao">*</button>
-		<button id="button-operador-divisao">/</button>
-		<button id="igual">=</button>
-		<button id="limpar">C</button>
+		<div class="displayContainer">
+			<input type="text" id="display" disabled>
+		</div>
+		<div class="operatorContainer">
+			<button id="button-operador-soma">+</button>
+			<button id="button-operador-subtracao">-</button>
+			<button id="button-operador-multiplicacao">*</button>
+			<button id="button-operador-divisao">/</button>
+		</div>
+		<div class="botoes">
+			<div class="buttonContainer">
+				<div class="row">
+					<button id="button-7">7</button>
+					<button id="button-8">8</button>
+					<button id="button-9">9</button>
+				</div>
+				<div class="row">
+					<button id="button-4">4</button>
+					<button id="button-5">5</button>
+					<button id="button-6">6</button>
+				</div>
+				<div class="row">
+					<button id="button-1">1</button>
+					<button id="button-2">2</button>
+					<button id="button-3">3</button>
+				</div>
+				<div class="row">
+					<button id="button-0">0</button>
+					<button id="del">DEL</button>
+				</div>
+			</div>
+			<div class="displayChange">
+				<button id="igual">=</button>
+				<button id="limpar">C</button>
+			</div>
+		</div>
 	</div>
+	
 </body>
 </html>
