@@ -4,10 +4,21 @@ const numButtons = container.querySelectorAll('[id^="button-"]')
 const igualButton = container.querySelector('#igual')
 const resultDisplay = container.querySelector('#result')
 const limparButton = container.querySelector('#limpar')
+const delButton = container.querySelector('#del')
+
+delButton.addEventListener('click',deleteLast)
 
 limparButton.addEventListener('click',limparDisplay)
 
-igualButton.addEventListener('click',getExpression)    
+igualButton.addEventListener('click',getExpression)   
+
+function deleteLast () {
+    if (display.value > 0) {
+        let string = display.value
+        let newStr = string.slice(0, -1);
+        display.value = newStr
+    }
+}
 
 function limparDisplay () {
     display.value = ''
@@ -29,8 +40,12 @@ function getExpression () {
     const firstNumber = expression.slice(0,operatorIndex)
     const secondNumber = expression.slice(operatorIndex + 1)
     const operator = expression[operatorIndex]
+//nao tiver dois numeros e 1 operador
+        if (!firstNumber||!secondNumber||!operator) {
+            return 'Error'}
+        else {
     const result = operate(operator,Number(firstNumber),Number(secondNumber))
-    display.value = result
+    display.value = result}
 
 }}
 
@@ -59,6 +74,9 @@ function operate (operator,firstNumber,secondNumber) {
     }else if (operator === '*') {
         return multiply(firstNumber,secondNumber)
     }else if (operator === '/') {
+        if (firstNumber === 0 || secondNumber === 0) {
+            return 'Banana'
+        }
         return divide(firstNumber,secondNumber)
     }
 }
@@ -76,6 +94,11 @@ function multiply (num1, num2) {
 }
 
 function divide (num1, num2) {
-    return num1 / num2
+    if (num1 > num2) {
+    return Math.round(num1/num2)
+}
+    else {
+        return (num1/num2).toFixed(2)
+    }
 }
 
