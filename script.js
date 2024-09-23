@@ -1,17 +1,39 @@
-let firstNumber = ''
+/* let firstNumber = ''
 let secondNumber = ''
-let operator = ''
-let result = ''
+let operator = null */
 
 const container = document.querySelector('.container')
 const display = container.querySelector('#display')
 const numButtons = container.querySelectorAll('[id^="button-"]')
-const operatorButtons = container.querySelectorAll('[id^="operador-"]')
+const igualButton = container.querySelector('#igual')
 
-/* operatorButtons.forEach(element => {
-    element.addEventListener('click',writeDisplay)    
-});
- */
+igualButton.addEventListener('click',getExpression)    
+
+function getExpression () {
+    let expression = display.value
+    const operadores = ['+', '-', '/', '*'];
+    const indiceOperador = []; // indice do operador
+
+    for (let i = 0; i < expression.length; i++) {
+        if (operadores.includes(expression[i])) {
+            indiceOperador.push(i);
+        }
+    } 
+    // O '=' NAO VAI FUNCIONAR SE ESTIVER VAZIO O DISPLAY
+    if (expression.length > 0) {
+    const operatorIndex = indiceOperador[0]
+    const firstNumber = expression.slice(0,operatorIndex)
+    const secondNumber = expression.slice(operatorIndex + 1)
+    const operator = expression[operatorIndex]
+    
+    display.value = ''
+    console.log(operate(operator,Number(firstNumber),Number(secondNumber)))
+}
+    
+    /* dividir a expressao em 3 começo até indiceoperador, operador e operador até fim 
+    chamar a função operate */
+}
+
 numButtons.forEach(element => {
     element.addEventListener('click',writeDisplay)    
 });
@@ -31,13 +53,13 @@ function writeDisplay (e) {
 
 function operate (operator,firstNumber,secondNumber) {
     if (operator === '+') {
-        add(firstNumber,secondNumber)
+        return add(firstNumber,secondNumber)
     } else if (operator === '-') {
-        subtract(firstNumber,secondNumber)
+        return subtract(firstNumber,secondNumber)
     }else if (operator === '*') {
-        multiply(firstNumber,secondNumber)
+        return multiply(firstNumber,secondNumber)
     }else if (operator === '/') {
-        divide(firstNumber,secondNumber)
+        return divide(firstNumber,secondNumber)
     }
 }
 
